@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "cbac203a-154c-4b49-8480-d4c7d587fb25",
+		"name": "RAD OpenAI API",
+		"description": "Postman collection for RAD OpenAI API endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27921255"
+	},
+	"item": [
+		{
+			"name": "Root Endpoint",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ingest Data into Vector Store",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\": [\n        {\"fullplot\": \"Plot of Movie 1\", \"title\": \"Movie 1\"},\n        {\"fullplot\": \"Plot of Movie 2\", \"title\": \"Movie 2\"}\n    ]\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/vector/ingest",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"vector",
+						"ingest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query Vector Store",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/vector/query?query=\"Movie1\"",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"vector",
+						"query"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "\"Movie1\""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Setup Semantic Cache",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/semantic/setup",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"semantic",
+						"setup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "embedded_movies",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/dataset/import",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"dataset",
+						"import"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "analaysis",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/dataset/import",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"dataset",
+						"import"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ChatPromptRequest",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"prompt\": \"Answer the question based only on the following context:\\n{context}\\n\\nQuestion: {question}\",\r\n    \"query\": \"What is the best movie to watch when sad?\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/chat/prompt",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"chat",
+						"prompt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ChatPromptRequest Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"prompt\": \"Answer the question based only on the following context:\\n{context}\\n\\nQuestion: {question}\",\r\n    \"query\": \"What is the best movie to watch when sad?\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/chat/rag",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"chat",
+						"rag"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
